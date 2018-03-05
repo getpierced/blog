@@ -17,7 +17,7 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.categories.index')->with('categories', Category::all());
     }
 
     /**
@@ -68,7 +68,9 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+
+        return view('admin.categories.edit')->with('category', $category);
     }
 
     /**
