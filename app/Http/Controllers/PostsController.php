@@ -18,7 +18,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.posts.index')-> with('posts', Post::all());
     }
 
     /**
@@ -95,7 +95,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+
+        return view('admin.posts.edit')->with('post', $post)->with('categories', Category::all());
+
     }
 
     /**
@@ -118,6 +121,39 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        Session::flash('success', 'The post was just trashed');
+        return redirect()->back();
+    }
+
+    public function trashed()
+    {
+        $posts = Post::onlyTrashed()->get();
+
+        return view('admin.posts.trashed')->with('posts', $posts);
+    }
+
+    public function kill($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->forceDelete();
+
+        Session::flash('success', 'Post deleted permanently');
+
+        return  redirect()->back();
+    }
+
+    public function restore($id)
+    {
+        $post = Post::withTrashed()->where('id', $id)->first();
+
+        $post->restore();
+
+        Session::flash('success', 'Post restored successfully');
+
+        return  redirect()->route('posts');
     }
 }
