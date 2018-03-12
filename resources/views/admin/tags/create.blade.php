@@ -6,20 +6,20 @@
 
     <div class="card">
         <div class="card-header">
-            Edit Tag : {{ $tag->tag }}
+            Create a new Tag
         </div>
 
         <div class="card-body">
-            <form action="{{route('tag.update', ['id'=>$tag->id])}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('tag.store')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div class="form-group">
                     <label for="name">Tag</label>
-                    <input type="text" name="tag" value="{{ $tag->tag }}" class="form-control">
+                    <input type="text" name="tag" class="form-control">
                 </div>
                 <div class="form-group">
                     <div class="text-center">
                         <button class="btn btn-success" type="submit">
-                            Update Tag
+                            Store Tag
                         </button>
                     </div>
                 </div>
