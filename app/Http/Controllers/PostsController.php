@@ -39,7 +39,7 @@ class PostsController extends Controller
         }
 
         return view('admin.posts.create')->with('categories', $categories)
-                                              ->with('tags', Tag::all());
+                                            ->with('tags', Tag::all());
     }
 
     /**
@@ -51,11 +51,14 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 
+        // dd($request->all());
+
         $this->validate($request, [
             'title' => 'required',
             'featured' => 'required|image',
             'content' => 'required',
-            'category_id' => 'required'
+            'category_id' => 'required',
+            'tags' =>'required'
         ]);
 
         $featured = $request->featured;
@@ -71,6 +74,8 @@ class PostsController extends Controller
            'category_id' => $request->category_id,
             'slug' => str_slug($request->title)
         ]);
+
+        $post->tags()->attach($request->tags);
 
         Session::flash('success', 'Post created successfully');
 

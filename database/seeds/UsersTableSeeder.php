@@ -11,10 +11,23 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        App\User::create([
+        $user = App\User::create([
             'name' => 'Rob',
             'email' => 'oh.ya.rob@gmail.com',
-            'password' => bcrypt('teamatl')
+            'password' => bcrypt('teamatl'),
+            'admin' => 1
+
+        ]);
+
+             App\Profile::create([
+                 'user_id' => $user->id,
+                 'avatar' => 'uploads/avatars/1520304283phpstorm.png',
+                 'about' => 'Instead of tossing delicious oyster sauce with blood oranges, use twelve peaces cream and eleven tablespoons nutmeg saucepan.',
+                 'facebook' => 'facebook.com',
+                 'youtube' => 'youtube.com'
+
         ]);
     }
 }
+
+
