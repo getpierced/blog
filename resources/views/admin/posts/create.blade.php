@@ -29,6 +29,14 @@
                       </select>
               </div>
               <div class="form-group">
+                  <div class="form-check">
+                      <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox">
+
+                      </label>
+                  </div>
+              </div>
+              <div class="form-group">
                   <label for="content">Content</label>
                   <textarea name="content" id="content" cols="5" rows="5" class="form-control"></textarea>
               </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use function redirect;
 use Session;
 use App\Post;
@@ -37,7 +38,8 @@ class PostsController extends Controller
             return redirect()->back();
         }
 
-        return view('admin.posts.create')->with('categories', $categories);
+        return view('admin.posts.create')->with('categories', $categories)
+                                              ->with('tags', Tag::all());
     }
 
     /**
