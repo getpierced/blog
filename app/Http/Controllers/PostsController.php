@@ -15,7 +15,7 @@ class PostsController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -25,7 +25,7 @@ class PostsController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function create()
     {
@@ -104,7 +104,9 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        return view('admin.posts.edit')->with('post', $post)->with('categories', Category::all());
+        return view('admin.posts.edit')->with('post', $post)
+                                            ->with('categories', Category::all())
+                                            ->with('tags', Tag::all());
 
     }
 
@@ -143,6 +145,8 @@ class PostsController extends Controller
             $post->category_id = $request->category_id;
 
             $post->save();
+
+            $post->tags()->sync($request->tags);
 
             Session::flash('success', 'Post updated successfully.');
 

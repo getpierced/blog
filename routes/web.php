@@ -1,7 +1,7 @@
 <?php
 
 Route::get('/test', function(){
-   return App\Post::find(5)->category;
+   return App\Profile::find(1)->user;
 });
 
 
