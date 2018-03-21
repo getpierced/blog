@@ -45,8 +45,8 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -196,4 +196,6 @@ class PostsController extends Controller
 
         return  redirect()->route('posts');
     }
+
+
 }
