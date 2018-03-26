@@ -10,9 +10,7 @@ class Post extends Model
 
     use SoftDeletes;
 
-    protected $fillable = [
-        'title', 'content', 'category_id', 'featured', 'slug'
-    ];
+    protected $fillable = ['title', 'content', 'category_id', 'featured', 'slug' ];
 
     public function getFeaturedAttribute($featured)
     {
