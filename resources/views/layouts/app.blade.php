@@ -13,6 +13,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
+    @yield('styles')
+
 </head>
 <body>
     <div id="app">
@@ -128,5 +130,7 @@
         toastr.info("{{ Session::get('info') }}")
         @endif
     </script>
+
+    @yield('scripts')
 </body>
 </html>
