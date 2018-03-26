@@ -6,7 +6,7 @@
 
     <div class="card">
         <div class="card-header">
-            Create a new Tag
+            Create a new user
         </div>
 
         <div class="card-body">
