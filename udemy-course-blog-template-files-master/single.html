@@ -294,7 +294,8 @@
 
                 <div class="pagination-arrow">
 
-                    <a href="#" class="btn-prev-wrap">
+                    @if($next)
+                    <a href="{{ route('post.single', ['slug' => $next->slug ]) }}" class="btn-prev-wrap">
                         <svg class="btn-prev">
                             <use xlink:href="#arrow-left"></use>
                         </svg>
@@ -303,6 +304,7 @@
                             <p class="btn-content-subtitle">Claritas Est Etiam Processus</p>
                         </div>
                     </a>
+                    @endif
 
                     <a href="#" class="btn-next-wrap">
                         <div class="btn-content">
